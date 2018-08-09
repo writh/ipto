@@ -1,5 +1,6 @@
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React, { Component } from 'react';
+import '../App.css';
  
 export class MapContainer extends Component {
     state = {
@@ -7,6 +8,8 @@ export class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
     };
+    geo = navigator.geolocation
+
    
     onMarkerClick = (props, marker, e) =>
       this.setState({
@@ -26,7 +29,7 @@ export class MapContainer extends Component {
    
     render() {
       return (
-        <Map google={this.props.google}
+        <Map className="Map" google={this.props.google}
             onClick={this.onMapClicked}>
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
