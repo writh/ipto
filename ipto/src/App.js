@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
+import {Route} from 'react-router-dom'
 import './App.css';
-import Map from './components/Map'
-import Details from './components/Details';
-import Header from './components/Header';
-import Search from './components/Search';
+// import Nav from './components/Nav/Nav'
+import Routes from './route'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
+// const nav = this.props.location.pathname === '/' ? "" : 
     return (
       <div className="App">
-        <Header/>
-        <Map/>
-        <Search/>
-        <div className="DetailsContainer" >
-          <Details/>
-        </div>
+
+    {/* <Route component={Nav} /> */}
+    <Routes/>
       </div>
     );
   }

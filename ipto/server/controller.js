@@ -26,71 +26,71 @@ module.exports = {
          })
     },
 
-    getPosts: (req, res, next)=>{
-        const dbInstance = req.app.get('db')
-        const {search, user_posts} = req.query
-        const newSearch = '%'+search+'%'
-        const id = req.session.user_id
+//     getPosts: (req, res, next)=>{
+//         const dbInstance = req.app.get('db')
+//         const {search, user_posts} = req.query
+//         const newSearch = '%'+search+'%'
+//         const id = req.session.user_id
         
-        if(search && user_posts){
-        dbInstance.get_posts_filtered([newSearch, id])
-        .then(posts=> res.status(200).send(posts))
-        .catch((err) => {
-            res.status(500).send({ errorMessage: 'Something went wrong!' });
-            console.log(err);
-         })
+//         if(search && user_posts){
+//         dbInstance.get_posts_filtered([newSearch, id])
+//         .then(posts=> res.status(200).send(posts))
+//         .catch((err) => {
+//             res.status(500).send({ errorMessage: 'Something went wrong!' });
+//             console.log(err);
+//          })
 
 
-    }else if(search){
-        dbInstance.get_posts_search([newSearch])
-        .then(posts=> res.status(200).send(posts))
-        .catch((err) => {
-            res.status(500).send({ errorMessage: 'Something went wrong!' });
-            console.log(err);
-         })
+//     }else if(search){
+//         dbInstance.get_posts_search([newSearch])
+//         .then(posts=> res.status(200).send(posts))
+//         .catch((err) => {
+//             res.status(500).send({ errorMessage: 'Something went wrong!' });
+//             console.log(err);
+//          })
 
-    }else if(user_posts){
-        dbInstance.get_posts_user([id])
-        .then(posts=> res.status(200).send(posts))
-        .catch((err) => {
-            res.status(500).send({ errorMessage: 'Something went wrong!' });
-            console.log(err);
-         })
-    }
-    else{
-        dbInstance.get_posts([])
-        .then(posts=> res.status(200).send(posts))
-        .catch((err) => {
-            res.status(500).send({ errorMessage: 'Something went wrong!' });
-            console.log(err);
-         })
-    }
-},
-    getSinglePost: (req, res, next)=>{
-        const dbInstance = req.app.get('db')
-        const {id} = req.params
-        console.log('id of req.params', req.params)
-        dbInstance.get_single_post([id]).then(post=>{
-            console.log('post', post)
-            res.status(200).send(post)
-        })
-        .catch((err) => {
-            res.status(500).send({ errorMessage: 'Something went wrong!' });
-            console.log(err);
-         })
+//     }else if(user_posts){
+//         dbInstance.get_posts_user([id])
+//         .then(posts=> res.status(200).send(posts))
+//         .catch((err) => {
+//             res.status(500).send({ errorMessage: 'Something went wrong!' });
+//             console.log(err);
+//          })
+//     }
+//     else{
+//         dbInstance.get_posts([])
+//         .then(posts=> res.status(200).send(posts))
+//         .catch((err) => {
+//             res.status(500).send({ errorMessage: 'Something went wrong!' });
+//             console.log(err);
+//          })
+//     }
+// },
+//     getSinglePost: (req, res, next)=>{
+//         const dbInstance = req.app.get('db')
+//         const {id} = req.params
+//         console.log('id of req.params', req.params)
+//         dbInstance.get_single_post([id]).then(post=>{
+//             console.log('post', post)
+//             res.status(200).send(post)
+//         })
+//         .catch((err) => {
+//             res.status(500).send({ errorMessage: 'Something went wrong!' });
+//             console.log(err);
+//          })
         
-    },
-    newPost: (req, res, next)=>{
-        const dbInstance = req.app.get('db')
-        const {title, image_url, content } = req.body
-        const user_id = req.session.user_id
-        dbInstance.add_post([title, image_url, content, user_id])
-        .then(()=> { res.status(200).send({message: 'item added to database'})})
-        .catch((err) => {
-         res.status(500).send({ errorMessage: 'Something went wrong!' });
-         console.log(err);
-      })
-    },
+//     },
+//     newPost: (req, res, next)=>{
+//         const dbInstance = req.app.get('db')
+//         const {title, image_url, content } = req.body
+//         const user_id = req.session.user_id
+//         dbInstance.add_post([title, image_url, content, user_id])
+//         .then(()=> { res.status(200).send({message: 'item added to database'})})
+//         .catch((err) => {
+//          res.status(500).send({ errorMessage: 'Something went wrong!' });
+//          console.log(err);
+//       })
+//     },
     userInfo: (req, res, next)=>{
         const dbInstance = req.app.get('db')
         const user_id = req.session.user_id

@@ -23,11 +23,13 @@ massive(process.env.DB_CONNECT)
 })
 .catch(err => console.log(err))
 
-app.post('/api/createreview', controller.createReview)
-app.post('/api/createlocation', controller.createLocation)
-app.patch('/api/editreview', controller.editReview)
-app.delete('/api/deletereview', controller.deleteReview)
-app.get('/api/getlocation/:id', controller.getLocation)
+app.post('/api/user', controller.create)
+app.post('/api/login', controller.loginUser)
+// app.post('/api/createreview', controller.createReview)
+// app.post('/api/createlocation', controller.createLocation)
+// app.patch('/api/editreview', controller.editReview)
+// app.delete('/api/deletereview', controller.deleteReview)
+// app.get('/api/getlocation/:id', controller.getLocation)
 
 const port = 3005
 
