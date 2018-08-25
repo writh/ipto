@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import NewReviewButton from './NewReviewButton';
 
 class Details extends Component {
     render() {
@@ -9,6 +10,8 @@ class Details extends Component {
                 Details
                 <br/>
                 Review list
+                <br/>
+                <NewReviewButton/>
             </div>
 
 

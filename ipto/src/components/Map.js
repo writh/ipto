@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 import '../App.css';
 import Details from './Details'
 import Search from './Search'
- 
+import Header from './Header'
+
 export class MapContainer extends Component {
     state = {
-      showingInfoWindow: false,
+      showingInfoWindow: true,
       activeMarker: {},
       selectedPlace: {},
     };
-    geo = navigator.geolocation
+    // geo = navigator.geolocation
 
    
     onMarkerClick = (props, marker, e) =>
@@ -20,11 +21,16 @@ export class MapContainer extends Component {
         showingInfoWindow: true
       });
    
-    onMapClicked = (props) => {
+    onMapClick = (props) => {
       if (this.state.showingInfoWindow) {
         this.setState({
-          showingInfoWindow: false,
+          // showingInfoWindow: false,
           activeMarker: null
+        })
+      }
+      else {
+        this.setState({
+          activeMarker: {}
         })
       }
     };
@@ -32,20 +38,21 @@ export class MapContainer extends Component {
     render() {
       return (
         <div className="App">
+          <Header/>
           <Details/>
           <Search/>
           <Map className="Map" google={this.props.google}
-              onClick={this.onMapClicked}>
-            <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
-    
+              onClick={this.onMapClick}>
+
+            <Marker
+              onClick = { this.onMarkerClick }
+              title = { 'Changing Colors Garage' }
+              position = {{ lat: 39.648209, lng: -75.711185 }}
+              name = { 'Changing Colors Garage' }
+            />
             <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}>
-                <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
-                </div>
-            </InfoWindow>
+              marker = { this.state.activeMarker }
+              visible = { this.state.showingInfoWindow }/>
           </Map>
         </div>
       )
