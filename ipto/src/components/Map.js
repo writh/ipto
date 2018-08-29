@@ -4,12 +4,21 @@ import '../App.css';
 import Details from './Details'
 import Search from './Search'
 import Header from './Header'
+import Form from './Form'
 
 export class MapContainer extends Component {
     state = {
-      showingInfoWindow: true,
-      activeMarker: {},
-      selectedPlace: {},
+      showingInfoWindow: false,
+      activeMarker: null,
+      selectedPlace: null,
+      lastClickedPlace: null,
+      locationName: '',
+      locationCoordinates: '',
+      locationAddress: '',
+      locationZip: 90210,
+      locationState: '',
+
+
     };
     // geo = navigator.geolocation
 
@@ -21,39 +30,60 @@ export class MapContainer extends Component {
         showingInfoWindow: true
       });
    
-    onMapClick = (props) => {
+    onMapClick = (_,__,event) => {
       if (this.state.showingInfoWindow) {
         this.setState({
-          // showingInfoWindow: false,
-          activeMarker: null
+          showingInfoWindow: false,
+          // activeMarker: null
         })
       }
       else {
         this.setState({
-          activeMarker: {}
+          lastClickedPlace: event.latLng
         })
       }
     };
+
+    handleNameChange = (event) => {
+      this.setState({
+        locationName: event.target.value
+      })
+    }
+
+
+
+
+    // onInfoWindowSubmit = ()
    
-    render() {
+    render() { debugger
       return (
         <div className="App">
           <Header/>
-          <Details/>
-          <Search/>
           <Map className="Map" google={this.props.google}
               onClick={this.onMapClick}>
 
             <Marker
               onClick = { this.onMarkerClick }
               title = { 'Changing Colors Garage' }
-              position = {{ lat: 39.648209, lng: -75.711185 }}
+              position = {this.state.lastClickedPlace}
               name = { 'Changing Colors Garage' }
             />
-            <InfoWindow
+            <InfoWindow className='Infowindow'
               marker = { this.state.activeMarker }
-              visible = { this.state.showingInfoWindow }/>
+              visible = { this.state.showingInfoWindow }>
+              <form action="">
+                Name<input type="text" value={this.state.locationName} onChange={this.handleNameChange}/>
+                Address<input type="text" onChange = {this.handleAddressChange}/>
+                Zip Code<input type="text" onChange = {this.handleZipChange}/>
+                State<input type="text" onChange = {this.handleStateChange}/>
+                <br/>
+                <button onClick = { this.onInfoWindowSubmit } >Submit</button>
+              </form>
+            </InfoWindow>
           </Map>
+          <Details/>
+          <Search/>
+          <Form/>
         </div>
       )
     }

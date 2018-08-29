@@ -80,17 +80,17 @@ module.exports = {
 //          })
         
 //     },
-//     newPost: (req, res, next)=>{
-//         const dbInstance = req.app.get('db')
-//         const {title, image_url, content } = req.body
-//         const user_id = req.session.user_id
-//         dbInstance.add_post([title, image_url, content, user_id])
-//         .then(()=> { res.status(200).send({message: 'item added to database'})})
-//         .catch((err) => {
-//          res.status(500).send({ errorMessage: 'Something went wrong!' });
-//          console.log(err);
-//       })
-//     },
+    addReview: (req, res, next)=>{
+        const dbInstance = req.app.get('db')
+        const {stars, clean, purchase, handicap, gender, occupancy } = req.body
+        const user_id = req.session.user_id
+        dbInstance.add_review([user_id, stars, clean, purchase, handicap, gender, occupancy])
+        .then(()=> { res.status(200).send({message: 'item added to database'})})
+        .catch((err) => {
+         res.status(500).send({ errorMessage: 'Something went wrong!' });
+         console.log(err);
+      })
+    },
     userInfo: (req, res, next)=>{
         const dbInstance = req.app.get('db')
         const user_id = req.session.user_id

@@ -1,0 +1,20 @@
+INSERT INTO reviews(
+location_id,
+user_id,
+stars,
+clean,
+purchase,
+handicap,
+gender,
+occupancy
+)
+VALUES(
+    $1,
+    $2,
+    $3,
+    $4,
+    $5,
+    $6,
+    $7,
+    $8
+)

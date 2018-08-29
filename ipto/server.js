@@ -26,7 +26,7 @@ massive(process.env.DB_CONNECT)
 
 app.post('/api/user', controller.create)
 app.post('/api/login', controller.loginUser)
-// app.post('/api/createreview', controller.createReview)
+app.post('/api/addreview', controller.addReview)
 // app.post('/api/createlocation', controller.createLocation)
 // app.patch('/api/editreview', controller.editReview)
 // app.delete('/api/deletereview', controller.deleteReview)
