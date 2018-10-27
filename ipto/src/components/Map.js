@@ -6,6 +6,8 @@ import Search from './Search'
 import Header from './Header'
 import Form from './Form'
 
+
+
 export class MapContainer extends Component {
     state = {
       showingInfoWindow: false,
@@ -17,18 +19,20 @@ export class MapContainer extends Component {
       locationAddress: '',
       locationZip: 90210,
       locationState: '',
+      formDisplay: false,
 
 
     };
     // geo = navigator.geolocation
-
+  
    
     onMarkerClick = (props, marker, e) =>
       
       this.setState({
         selectedPlace: props,
         activeMarker: marker,
-        showingInfoWindow: true
+        showingInfoWindow: true,
+        formDisplay: true,
       });
    
     onMapClick = (_,__,event) => {
@@ -51,7 +55,11 @@ export class MapContainer extends Component {
       })
     }
 
+    hideForm = (event) => {
 
+    }
+
+  
 
 
     // onInfoWindowSubmit = ()
@@ -71,7 +79,9 @@ export class MapContainer extends Component {
             />
             <InfoWindow className='Infowindow'
               marker = { this.state.activeMarker }
-              visible = { this.state.showingInfoWindow }>
+              // visible = { this.state.showingInfoWindow }
+              onClick={this.newBusiness}
+              >
               <form action="">
                 Name<input type="text" value={this.state.locationName} onChange={this.handleNameChange}/>
                 Address<input type="text" onChange = {this.handleAddressChange}/>
@@ -84,7 +94,11 @@ export class MapContainer extends Component {
           </Map>
           <Details/>
           <Search/>
-          <Form/>
+          {
+            this.state.showingInfoWindow ? <Form/>
+            :
+            <div/>
+          }
         </div>
       )
     }
