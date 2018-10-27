@@ -24,6 +24,7 @@ export class MapContainer extends Component {
 
    
     onMarkerClick = (props, marker, e) =>
+      
       this.setState({
         selectedPlace: props,
         activeMarker: marker,
@@ -55,7 +56,7 @@ export class MapContainer extends Component {
 
     // onInfoWindowSubmit = ()
    
-    render() { debugger
+    render() {
       return (
         <div className="App">
           <Header/>

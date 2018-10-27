@@ -62,5 +62,4 @@ npm
   }
 }
 
-
 export default connect(state=>state, {loginUser, registerUser} )(Auth)
