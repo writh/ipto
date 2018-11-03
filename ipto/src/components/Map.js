@@ -79,26 +79,14 @@ export class MapContainer extends Component {
             />
             <InfoWindow className='Infowindow'
               marker = { this.state.activeMarker }
-              // visible = { this.state.showingInfoWindow }
               onClick={this.newBusiness}
-              >
-              <form action="">
-                Name<input type="text" value={this.state.locationName} onChange={this.handleNameChange}/>
-                Address<input type="text" onChange = {this.handleAddressChange}/>
-                Zip Code<input type="text" onChange = {this.handleZipChange}/>
-                State<input type="text" onChange = {this.handleStateChange}/>
-                <br/>
-                <button onClick = { this.onInfoWindowSubmit } >Submit</button>
-              </form>
-            </InfoWindow>
+              />
           </Map>
           <Details/>
           <Search/>
-          {
-            this.state.showingInfoWindow ? <Form/>
+          {this.state.showingInfoWindow ? <Form/>
             :
-            <div/>
-          }
+            <div/>}
         </div>
       )
     }
