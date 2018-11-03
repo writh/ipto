@@ -5,6 +5,7 @@ import Details from './Details'
 import Search from './Search'
 import Header from './Header'
 import Form from './Form'
+import AddBusiness from './AddBusiness';
 
 
 
@@ -79,14 +80,18 @@ export class MapContainer extends Component {
             />
             <InfoWindow className='Infowindow'
               marker = { this.state.activeMarker }
+              // visible = { this.state.showingInfoWindow }
               onClick={this.newBusiness}
-              />
+              >
+            </InfoWindow>
           </Map>
           <Details/>
           <Search/>
-          {this.state.showingInfoWindow ? <Form/>
+          {
+            this.state.showingInfoWindow ? <Form />
             :
-            <div/>}
+            <div/>
+          }
         </div>
       )
     }

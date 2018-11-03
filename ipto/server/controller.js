@@ -91,6 +91,17 @@ module.exports = {
          console.log(err);
       })
     },
+    addBusiness: (req, res, next)=>{
+        const dbInstance = req.app.get('db')
+        const {name, coordinates, address, zip, state} = req.body
+        const user_id = req.session.user_id
+        dbInstance.add_business([name, coordinates, address, zip, state])
+        .then(()=> { res.status(200).send({message: 'item added to database'})})
+        .catch((err) => {
+         res.status(500).send({ errorMessage: 'Something went wrong!' });
+         console.log(err);
+      })
+    },
     userInfo: (req, res, next)=>{
         const dbInstance = req.app.get('db')
         const user_id = req.session.user_id
