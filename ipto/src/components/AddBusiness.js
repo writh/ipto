@@ -34,13 +34,9 @@ class AddBusiness extends Component {
 		return (
 			<div className="Form">
 				<div className="form-card">
-					<h3>Business Name:</h3>
                     <input>name</input>
-					<h3>Address:</h3>
 					<input>address</input>
-					<h3>Zip Code:</h3>
 					<input>zip code</input>
-					<h3>State:</h3>
 					<input>state</input>
 					<br/>
 					<br/>
