@@ -40,7 +40,9 @@ class AddBusiness extends Component {
 					<input>state</input>
 					<br/>
 					<br/>
-					<button id='post-button' className="black-button" onClick={() => this.newBusiness()}>
+					<button id='post-button' 
+						className="black-button" 
+						onClick={() => this.newBusiness()}>
 						post
 					</button>
 				</div>
