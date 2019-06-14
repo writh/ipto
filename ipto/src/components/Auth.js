@@ -15,6 +15,7 @@ class Auth extends Component {
     }
   }
 
+  
     handleChange(event, name) {
       const value = event.target.value;
       this.setState({ [name]: value });

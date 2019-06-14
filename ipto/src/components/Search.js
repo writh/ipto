@@ -8,24 +8,8 @@ class Search extends Component {
             <div className="Search">
                 Search
             </div>
-
-
         )
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default Search;

@@ -55,16 +55,9 @@ export class MapContainer extends Component {
         locationName: event.target.value
       })
     }
-
     hideForm = (event) => {
-
     }
-
-  
-
-
     // onInfoWindowSubmit = ()
-   
     render() {
       return (
         <div className="App">

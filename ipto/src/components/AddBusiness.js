@@ -50,4 +50,5 @@ class AddBusiness extends Component {
 		);
 	}
 }
+
 export default connect((state) => state)(AddBusiness);

@@ -21,18 +21,4 @@ class NewReviewButton extends Component {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default NewReviewButton;

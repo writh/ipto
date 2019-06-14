@@ -13,8 +13,6 @@ class Details extends Component {
                 <br/>
                 <NewReviewButton/>
             </div>
-
-
         )
     }
 }
