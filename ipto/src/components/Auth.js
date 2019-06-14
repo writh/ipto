@@ -13,7 +13,6 @@ class Auth extends Component {
       password: '',
       // profile_pic: '',
     }
-
   }
 
     handleChange(event, name) {
